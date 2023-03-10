@@ -3,20 +3,33 @@ import { Injectable } from "@nestjs/common/decorators";
 
 @Injectable()
 export class TicketService{
-    addTicket() : string {
-        return 'This will add ticket';
+    
+    private ticketData = []
+
+    addTicket(ticket){
+        this.ticketData.push(ticket);
+        return 'Ticket Added';
     }
 
-    updateTicket() :string {
+    updateTicket(){
+        
         return 'This will update ticket';
     }
 
-    deleteTicket() : string {
-        return 'This will delete ticket';
+    deleteTicketById(id: number) {
+        this.ticketData = this.ticketData.filter((ticketData)=>{
+            return ticketData.id != ticketData.id;
+        });
+        return "Ticket Deleted";
     }
 
-    findTicket() : string {
-        return 'This will find all tickets';
+    findTicket(){
+        return this.ticketData;
     }
+
+    // findTicketById(id :number){
+    //     return this.ticketData.find(ticketData => ticketData.id === id);
+    // } 
+    
 
 }

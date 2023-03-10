@@ -1,5 +1,6 @@
 import { Controller, Delete, Get, Post, Put} from "@nestjs/common";
-import { Param } from "@nestjs/common/decorators";
+import { Body, Param } from "@nestjs/common/decorators";
+import { ticketDTO } from "./DTO/ticket.dto";
 import { TicketService } from "./ticket.service";
 
 
@@ -10,15 +11,15 @@ export class TicketController{
 
     //add ticket
     @Post("/add")
-    addTicket() : string{
-        return this.ticketService.addTicket();
+    addTicket(@Body() newTicket:ticketDTO){
+        return this.ticketService.addTicket(newTicket);
     }
 
 
     //delete ticket
-    @Delete("/delete")
-    deleteTicket() : string{
-        return this.ticketService.deleteTicket();
+    @Delete("/delete/:id")
+    deleteTicketById(@Param("id") id:number){
+        return this.ticketService.deleteTicketById(id);
     }
 
 
@@ -31,13 +32,13 @@ export class TicketController{
     
     //find all ticket
     @Get("/findAll")
-    findAllTickets() : string{
+    findAllTickets(){
         return this.ticketService.findTicket();
     }
 
-    // @Get('/findTicketById/:ticketId')
-    // findTicketById(@Param() params): string {
-    // console.log(params.id);
-    // return `This will find a ticket of id #${params.ticketId} `;
+    // @Get(':id')
+    // findTicketById(@Param() params){
+    //     return this.ticketService.findTicketById(params.id);
+    // }
 }
 
