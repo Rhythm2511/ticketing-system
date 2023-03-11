@@ -1,5 +1,5 @@
-import { Controller, Delete, Get, Post, Put} from "@nestjs/common";
-import { Body, Param } from "@nestjs/common/decorators";
+import { Controller, Delete, Get, Post, Put, ValidationPipe} from "@nestjs/common";
+import { Body, Param, UsePipes } from "@nestjs/common/decorators";
 import { ticketDTO } from "./DTO/ticket.dto";
 import { TicketService } from "./ticket.service";
 
@@ -11,6 +11,7 @@ export class TicketController{
 
     //add ticket
     @Post("/add")
+    @UsePipes(ValidationPipe)
     addTicket(@Body() newTicket:ticketDTO){
         return this.ticketService.addTicket(newTicket);
     }
