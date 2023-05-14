@@ -32,11 +32,12 @@ export class TicketService{
     
 
     findTicket(){
-        return this.ticketData;
+        return this.ticketRepo.find();
     }
 
-    findTicketById(@Param('id') id :number){
-        return this.ticketData.find(ticketData => +ticketData.id == +id);
+    findTicketById(id):any {
+        return this.ticketRepo.findOneBy({ id });
+        // return this.ticketData.find(ticketData => +ticketData.id == +id);
     } 
     
 

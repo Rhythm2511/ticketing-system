@@ -7,12 +7,12 @@ import { TicketService } from './ticket.service';
 @Module({
   imports: [TypeOrmModule.forFeature([TicketEntity]),TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
+      host: 'containers-us-west-205.railway.app',
+      port: 6710,
       username: 'postgres',
-      password: '2598',
-      database: 'ticket',
-      entities: [TicketEntity],
+      password: 'arXDorx3aNBF8hpmofCu',
+      database: 'railway',
+      autoLoadEntities: true,
       synchronize: true,
   })],
   controllers: [TicketController],

@@ -43,8 +43,11 @@ export class TicketController{
     }
 
     @Get('/find/:id')
-    findTicketById(@Param() params){
-        return this.ticketService.findTicketById(params.id);
+    findTicketById(@Param('id') id: number){
+        return this.ticketService.findTicketById(id);
      }
 }
+
+
+
 

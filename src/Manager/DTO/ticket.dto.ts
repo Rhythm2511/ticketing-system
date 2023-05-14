@@ -8,5 +8,6 @@ export class ticketDTO{
 
     @IsNotEmpty()
     title: string;
+    
     time: string;
 }

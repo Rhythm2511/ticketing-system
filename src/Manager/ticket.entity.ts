@@ -22,6 +22,11 @@ export class TicketEntity{
     time: string;
 
     @Column({
+        type: 'varchar',
+    })
+    hall_no: number;
+
+    @Column({
         type: 'boolean',
         default: 1,
     })
